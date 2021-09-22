@@ -17,8 +17,9 @@ current_X = 0
 counts, _ = np.histogram(X[current_X], bins = int(X[current_X].max() + 1), range = (0, int(X[current_X].max())))
 
 m1, m2 = c1, c2 = np.nonzero(counts)[0]
-s1 = 2
-s2 = 2
+error_iterations = 300
+s1 = 50
+s2 = 50
 
 # Defining the functions
 def gaussian_noise(input, classe1, classe2, mu1, sigma1, mu2, sigma2):
@@ -36,14 +37,22 @@ def gaussian_classification(output, classe1, classe2, mu1, sigma1, mu2, sigma2):
 def error_rate(emitted, received):
     return np.count_nonzero(received - emitted) / len(emitted)
 
+def mean_error(input, classe1, classe2, mu1, sigma1, mu2, sigma2):
+    E = []
+    for t in range(0, error_iterations):
+        Y = gaussian_noise(input, classe1, classe2, mu1, sigma1, mu2, sigma2)
+        S = gaussian_classification(Y, classe1, classe2, mu1, sigma1, mu2, sigma2)
+        tau = error_rate(input, S)
+        E.append(tau)
+        E[t] = np.mean(E)
+    return E
+
 # Calling them
 Y = gaussian_noise(X[current_X], c1, c2, m1, s1, m2, s2)
 S = gaussian_classification(Y, c1, c2, m1, s1, m2, s2)
-tau = error_rate(X[current_X], S)
+E = mean_error(X[current_X], c1, c2, m1, s1, m2, s2)
 
 # Plot everything
-print(tau)
-
 fig, axs = plt.subplots(2, 2)
 fig.suptitle('signal = ' + str(current_X) + '  |  ' + 'mu1 = ' + str(m1) + ', sigma1 = ' + str(s1) + '  |  ' + 'mu2 = ' + str(m2) + ', sigma2 = ' + str(s2))
 
@@ -59,8 +68,8 @@ axs[1, 0].plot(S, 'tab:green')
 axs[1, 0].set_title('S')
 axs[1, 0].set(xlabel = 'samples', ylabel = 'omega')
 
-axs[1, 1].plot(tau, 'tab:red')
-axs[1, 1].set_title('tau')
-axs[1, 1].set(xlabel = 'samples', ylabel = tau)
+axs[1, 1].plot(E, 'tab:red')
+axs[1, 1].set_title('Error over time')
+axs[1, 1].set(xlabel = 'samples', ylabel = '')
 
 plt.show()
