@@ -36,39 +36,31 @@ def gaussian_classification(output, classe1, classe2, mu1, sigma1, mu2, sigma2):
 def error_rate(emitted, received):
     return np.count_nonzero(received - emitted) / len(emitted)
 
-def plot_results():
-    print(tau)
-
-    fig, axs = plt.subplots(2, 2)
-    fig.suptitle('signal = ' + str(current_X) + '  |  ' + 'mu1 = ' + str(m1) + ', sigma1 = ' + str(s1) + '  |  ' + 'mu2 = ' + str(m2) + ', sigma2 = ' + str(s2))
-
-    axs[0, 0].plot(X[current_X])
-    axs[0, 0].set_title('X')
-    axs[0, 0].set(xlabel = '', ylabel = 'omega')
-
-    axs[0, 1].plot(Y, 'tab:orange')
-    axs[0, 1].set_title('Y')
-    axs[0, 1].set(xlabel = '', ylabel = '')
-
-    axs[1, 0].plot(S, 'tab:green')
-    axs[1, 0].set_title('S')
-    axs[1, 0].set(xlabel = 'samples', ylabel = 'omega')
-
-    axs[1, 1].plot(tau, 'tab:red')
-    axs[1, 1].set_title('tau')
-    axs[1, 1].set(xlabel = 'samples', ylabel = tau)
-
-    plt.show()
-
-def main(X, c1, c2, m1, s1, m2, s2):
-    for x in X:
-        Y = gaussian_noise(x, c1, c2, m1, s1, m2, s2)
-        S = gaussian_classification(Y, c1, c2, m1, s1, m2, s2)
-        tau = error_rate(x, S)
-        print(tau)
-    plot_results()
-
 # Calling them
 Y = gaussian_noise(X[current_X], c1, c2, m1, s1, m2, s2)
 S = gaussian_classification(Y, c1, c2, m1, s1, m2, s2)
 tau = error_rate(X[current_X], S)
+
+# Plot everything
+print(tau)
+
+fig, axs = plt.subplots(2, 2)
+fig.suptitle('signal = ' + str(current_X) + '  |  ' + 'mu1 = ' + str(m1) + ', sigma1 = ' + str(s1) + '  |  ' + 'mu2 = ' + str(m2) + ', sigma2 = ' + str(s2))
+
+axs[0, 0].plot(X[current_X])
+axs[0, 0].set_title('X')
+axs[0, 0].set(xlabel = '', ylabel = 'omega')
+
+axs[0, 1].plot(Y, 'tab:orange')
+axs[0, 1].set_title('Y')
+axs[0, 1].set(xlabel = '', ylabel = '')
+
+axs[1, 0].plot(S, 'tab:green')
+axs[1, 0].set_title('S')
+axs[1, 0].set(xlabel = 'samples', ylabel = 'omega')
+
+axs[1, 1].plot(tau, 'tab:red')
+axs[1, 1].set_title('tau')
+axs[1, 1].set(xlabel = 'samples', ylabel = tau)
+
+plt.show()
