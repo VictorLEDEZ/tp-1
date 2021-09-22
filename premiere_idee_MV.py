@@ -15,11 +15,14 @@ X.append(np.load('./signals/signal5.npy'))
 current_X = 0
 
 counts, _ = np.histogram(X[current_X], bins = int(X[current_X].max() + 1), range = (0, int(X[current_X].max())))
+c1, c2 = np.nonzero(counts)[0]
 
-m1, m2 = c1, c2 = np.nonzero(counts)[0]
 error_iterations = 300
-s1 = 50
-s2 = 50
+
+m1 = [120, 127, 127, 127, 127] 
+m2 = [130, 127, 128, 128, 128]
+s1 = [1, 1, 1, 0.1, 2]
+s2 = [2, 5, 1, 0.1, 3]
 
 # Defining the functions
 def gaussian_noise(input, classe1, classe2, mu1, sigma1, mu2, sigma2):
