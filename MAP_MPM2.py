@@ -2,7 +2,7 @@ from matplotlib import pyplot as plt
 from scipy import stats as stats
 import numpy as np
 
-from signals import load_signals
+from utils.signals import load_signals
 
 # Import all the signals and storing them in an array
 X = load_signals()
