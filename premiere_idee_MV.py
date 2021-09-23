@@ -2,14 +2,10 @@ from matplotlib import pyplot as plt
 from scipy import stats as stats
 import numpy as np
 
+from signals import load_signals
+
 # Import all the signals and storing them in an array
-X = []
-X.append(np.load('./signals/signal.npy'))
-X.append(np.load('./signals/signal1.npy'))
-X.append(np.load('./signals/signal2.npy'))
-X.append(np.load('./signals/signal3.npy'))
-X.append(np.load('./signals/signal4.npy'))
-X.append(np.load('./signals/signal5.npy'))
+X = load_signals()
 
 # Setting constants
 m1 = [120, 127, 127, 127, 127] 
