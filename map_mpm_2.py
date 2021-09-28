@@ -19,11 +19,9 @@ cl2 = 200
 def apriori_calculation(input, classe1, class2, p1, p2, mu1, sigma1, mu2, sigma2):
     probability_Y1 = np.normpdf(input, mu1, sigma1)
     probability_Y2 = np.normpdf(input, mu2, sigma2)
-    S = classe1 * (p1 * probability_Y1 > p2 * probability_Y2) + class2 * (p1 * probability_Y1 < p2 * probability_Y2)
-    return 1, 2
+    return classe1 * (p1 * probability_Y1 > p2 * probability_Y2) + class2 * (p1 * probability_Y1 < p2 * probability_Y2)
 
 # Calling them
-p1, p2 = apriori_calculation(X, cl1, cl2, 0.5, 0.5, m1, s1, m2, s2)
+S = apriori_calculation(X, cl1, cl2, 0.5, 0.5, m1, s1, m2, s2)
 
-print(p1)
-print(p2)
+print(S)

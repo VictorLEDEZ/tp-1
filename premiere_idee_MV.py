@@ -111,7 +111,7 @@ def main(input, mu1, sigma1, mu2, sigma2):
         c1, c2 = np.nonzero(counts)[0]
         all_mean_erros = []
         for i in range(0, len(m1)):
-            E = mean_error(150, inp, c1, c2, mu1[i], sigma1[i], mu2[i], sigma2[i])
+            E = mean_error(100, inp, c1, c2, mu1[i], sigma1[i], mu2[i], sigma2[i])
             all_mean_erros.append(E)
         plot_results(signal_number, all_mean_erros, mu1, sigma1, mu2, sigma2)        
 
