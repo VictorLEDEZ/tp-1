@@ -1,7 +1,12 @@
+#importing modules
 from matplotlib import pyplot as plt
 from scipy import stats as stats
 import numpy as np
 
+# importing our own modules
+from utils.gaussian_classification import gaussian_classification
+from utils.gaussian_noise import gaussian_noise
+from utils.error_rate import error_rate
 from utils.signals import load_signals
 
 # Import all the signals and storing them in an array
@@ -14,52 +19,6 @@ s1 = [1, 1, 1, 0.1, 2]
 s2 = [2, 5, 1, 0.1, 3]
 
 # Defining the functions
-def gaussian_noise(input, classe1, classe2, mu1, sigma1, mu2, sigma2):
-    """Changes the input by adding some noise depending on omega1 or omega2
-
-    Args:
-        input ([Number]): the emitted signal
-        classe1 (Number): the first threshold
-        classe2 (Number): the second threshold
-        mu1 (Number): the first mean
-        sigma1 (Number): the first standard deviation
-        mu2 (Number): the second mean
-        sigma2 (Number): the second standard deviation
-
-    Returns:
-        [Number]: the recieved signal with some noise due to the communication
-    """
-    return (input == classe1) * np.random.normal(mu1, sigma1, input.shape) + (input == classe2) * np.random.normal(mu2, sigma2, input.shape)
-
-def gaussian_classification(output, classe1, classe2, mu1, sigma1, mu2, sigma2):
-    """Reconstitute the segmented signal S from the recieved signal via classe1 and classe2
-
-    Args:
-        output ([Number]): the recieved signal
-        classe1 (Number): the first threshold
-        classe2 (Number): the second threshold
-        mu1 (Number): the first mean
-        sigma1 (Number): the first standard deviation
-        mu2 (Number): the second mean
-        sigma2 (Number): the second standard deviation
-
-    Returns:
-        [Number]: the regenerated signal S
-    """
-    return np.where(stats.norm.pdf(output, mu1, sigma1) > stats.norm.pdf(output, mu2, sigma2), classe1, classe2)
-
-def error_rate(emitted, received):
-    """calculates the Bit Error Rate (BER) between the emitted and the recieved signal
-
-    Args:
-        emitted ([Number]): the clean emited signal
-        received ([Number]): the segmented signal
-
-    Returns:
-        Number: the Bit Error Rate
-    """
-    return np.count_nonzero(received - emitted) / len(emitted)
-
 def mean_error(error_iterations, input, classe1, classe2, mu1, sigma1, mu2, sigma2):
     """caclulates the mean error across all the iterations of the signal
 
