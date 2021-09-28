@@ -1,7 +1,10 @@
+# Importing modules
 from matplotlib import pyplot as plt
 from scipy import stats as stats
 import numpy as np
 
+# Importing our own modules
+from utils.classes_calculations import classes_calculations
 from utils.signals import load_signals
 
 # Importing all the variables
@@ -15,8 +18,7 @@ from variables import ERROR_ITERATIONS
 X = load_signals()
 
 # Setting constants
-cl1 = 100
-cl2 = 200
+cl1, cl2 = classes_calculations(X[0])
 
 # Defining the functions
 def apriori_calculation(input, classe1, class2, p1, p2, mu1, sigma1, mu2, sigma2):
