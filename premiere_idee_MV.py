@@ -11,10 +11,10 @@ from utils.error_rate import error_rate
 from utils.signals import load_signals
 
 # Importing all the variables
-from variables import M1
-from variables import M2
-from variables import S1
-from variables import S2
+from variables import MU1
+from variables import MU2
+from variables import SIGMA1
+from variables import SIGMA2
 from variables import ERROR_ITERATIONS
 
 # Import all the signals and storing them in an array
@@ -111,10 +111,10 @@ def main(input, mu1, sigma1, mu2, sigma2):
         signal_number += 1 
         c1, c2 = classes_calculations(inp)
         all_mean_erros = []
-        for i in range(0, len(m1)):
+        for i in range(0, len(mu1)):
             E = mean_error(ERROR_ITERATIONS, inp, c1, c2, mu1[i], sigma1[i], mu2[i], sigma2[i])
             all_mean_erros.append(E)
         plot_results(signal_number, all_mean_erros, mu1, sigma1, mu2, sigma2)        
 
 # Calling them
-main(X, M1, S1, M2, S2)
+main(X, MU1, SIGMA1, MU2, SIGMA2)
