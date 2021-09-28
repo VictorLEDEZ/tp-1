@@ -1,22 +1,24 @@
-#importing modules
+# Importing modules
 from matplotlib import pyplot as plt
 from scipy import stats as stats
 import numpy as np
 
-# importing our own modules
+# Importing our own modules
 from utils.gaussian_classification import gaussian_classification
+from utils.classes_calculations import classes_calculations
 from utils.gaussian_noise import gaussian_noise
 from utils.error_rate import error_rate
 from utils.signals import load_signals
 
+# Importing all the variables
+from variables import M1
+from variables import M2
+from variables import S1
+from variables import S2
+from variables import ERROR_ITERATIONS
+
 # Import all the signals and storing them in an array
 X = load_signals()
-
-# Setting constants
-m1 = [120, 127, 127, 127, 127] 
-m2 = [130, 127, 128, 128, 128]
-s1 = [1, 1, 1, 0.1, 2]
-s2 = [2, 5, 1, 0.1, 3]
 
 # Defining the functions
 def mean_error(error_iterations, input, classe1, classe2, mu1, sigma1, mu2, sigma2):
@@ -107,13 +109,12 @@ def main(input, mu1, sigma1, mu2, sigma2):
     signal_number = 0 
     for inp in input:
         signal_number += 1 
-        counts, _ = np.histogram(inp, bins = int(inp.max() + 1), range = (0, int(inp.max())))
-        c1, c2 = np.nonzero(counts)[0]
+        c1, c2 = classes_calculations(inp)
         all_mean_erros = []
         for i in range(0, len(m1)):
-            E = mean_error(100, inp, c1, c2, mu1[i], sigma1[i], mu2[i], sigma2[i])
+            E = mean_error(ERROR_ITERATIONS, inp, c1, c2, mu1[i], sigma1[i], mu2[i], sigma2[i])
             all_mean_erros.append(E)
         plot_results(signal_number, all_mean_erros, mu1, sigma1, mu2, sigma2)        
 
 # Calling them
-main(X, m1, s1, m2, s2)
+main(X, M1, S1, M2, S2)
