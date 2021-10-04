@@ -1,5 +1,6 @@
 # Importing our modules
 from utils.classes_calculations import classes_calculations
+from utils.plot_gaussians import plot_gaussians
 from utils.set_graphs import plot_results
 from utils.mean_error import mean_error
 from utils.signals import load_signals
@@ -13,6 +14,8 @@ from variables import ERROR_ITERATIONS
 
 # Import all the signals and storing them in an array
 signals = load_signals()
+
+plot_gaussians(MU1, SIGMA1, MU2, SIGMA2)
 
 signal_number = 0
 
