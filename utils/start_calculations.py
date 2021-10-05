@@ -1,7 +1,6 @@
 from utils.classes_calculations import classes_calculations
-from utils.set_graphs import plot_results
+from utils.plot_graphs import plot_graphs
 from utils.mean_error import mean_error
-
 
 def start_calculations(signals, error_iterations, mus1, sigmas1, mus2, sigmas2):
 
@@ -20,4 +19,4 @@ def start_calculations(signals, error_iterations, mus1, sigmas1, mus2, sigmas2):
             all_guassian_errors.append(E_gaussian)
             all_mpm_errors.append(E_mpm)
 
-        plot_results(signal_number, all_guassian_errors, all_mpm_errors, mus1, sigmas1, mus2, sigmas2)
+        plot_graphs(signal_number, all_guassian_errors, all_mpm_errors, mus1, sigmas1, mus2, sigmas2)
