@@ -1,14 +1,12 @@
 from utils.classes_calculations import classes_calculations
-from utils.plot_graphs import plot_graphs
 from utils.mean_error import mean_error
 
-def start_calculations(signals, error_iterations, mus1, sigmas1, mus2, sigmas2):
+def signals_both_errors(signals, error_iterations, mus1, sigmas1, mus2, sigmas2):
 
-    signal_number = 0
+    signals_guassian_errors = []
+    signals_mpm_errors = []
 
     for signal in signals:
-
-        signal_number += 1 
 
         c1, c2 = classes_calculations(signal)
         all_guassian_errors = []
@@ -18,5 +16,8 @@ def start_calculations(signals, error_iterations, mus1, sigmas1, mus2, sigmas2):
             E_gaussian, E_mpm = mean_error(error_iterations, signal, c1, c2, mus1[i], sigmas1[i], mus2[i], sigmas2[i])
             all_guassian_errors.append(E_gaussian)
             all_mpm_errors.append(E_mpm)
+            
+        signals_guassian_errors.append(all_guassian_errors)
+        signals_mpm_errors.append(all_mpm_errors)
 
-        plot_graphs(signal_number, all_guassian_errors, all_mpm_errors, mus1, sigmas1, mus2, sigmas2)
+    return signals_guassian_errors, signals_mpm_errors

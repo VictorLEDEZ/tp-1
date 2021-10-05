@@ -1,10 +1,11 @@
-from numpy.random.mtrand import normal
 from matplotlib import pyplot as plt
 import pandas as pd
 import numpy as np
 
-def plot_table(x, params):
+def plot_table(x, params, values):
     
+    values = np.around(np.absolute(np.transpose(values)), 4)
+
     index = []
     for i in range(0, len(params['mus1'])):
         index.append(
@@ -19,14 +20,13 @@ def plot_table(x, params):
         columns.append('s' + str(i + 1) + ': ' + str(len(x[i])))
 
     data_frame = pd.DataFrame(
-        np.random.randn(len(params['mus1']), len(x)),
+        values,
         index = index,
         columns = columns
     )
     
-    values = np.around(data_frame.values, 4)
-    norm = plt.Normalize(values.min() - 1, values.max() + 1)
-    colours = plt.cm.autumn(values)
+    norm = plt.Normalize(values.min() * 0.5, values.max() * 0.5)
+    colours = plt.cm.Reds(norm(values))
 
     figure = plt.figure(figsize = (15, 8))
     ax = figure.add_subplot(111, frameon = False, xticks = [], yticks = [])
