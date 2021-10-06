@@ -1,5 +1,5 @@
-from utils.classes_calculations import classes_calculations
-from utils.mean_error import mean_error
+from .classes_calculations import classes_calculations
+from .mean_error import mean_error
 
 def signals_both_errors(signals, error_iterations, mus1, sigmas1, mus2, sigmas2):
 

@@ -1,6 +1,6 @@
 from matplotlib import pyplot as plt
 
-from .title import title
+from utils.title import title
 
 def plot_graphs(signal_number, all_gaussian_errors, all_mpm_errors, all_mu_1, all_sigma_1, all_mu_2, all_sigma_2):
     """plots the results thanks to pyplot

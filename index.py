@@ -1,10 +1,10 @@
 # Importing our modules
 from utils.errors_differences import errors_differences
-from utils.plot_signals import plot_signals
+from utils.plotting.plot_signals import plot_signals
 from utils.signals_both_errors import signals_both_errors
 from utils.simulate_signal import simulate_signals
-from utils.plot_gaussians import plot_gaussians
-from utils.plot_table import plot_table
+from utils.plotting.plot_gaussians import plot_gaussians
+from utils.plotting.plot_table import plot_table
 from utils.signals import load_signals
 
 # Importing all the variables
@@ -34,13 +34,13 @@ params = {
 # signals_guassian_errors, signals_mpm_errors = signals_both_errors(signals, ERROR_ITERATIONS, MU1, SIGMA1, MU2, SIGMA2)
 # plot_signals(signals_guassian_errors, signals_mpm_errors, MU1, SIGMA1, MU2, SIGMA2)
 
-signals_guassian_errors, signals_mpm_errors = signals_both_errors(signals, ERROR_ITERATIONS, MU1, SIGMA1, MU2, SIGMA2)
-values = errors_differences(signals_guassian_errors, signals_mpm_errors)
-plot_table(signals, params, values)
-
-# signals_guassian_errors, signals_mpm_errors = signals_both_errors(simulated_signals, ERROR_ITERATIONS, MU1, SIGMA1, MU2, SIGMA2)
-# plot_signals(signals_guassian_errors, signals_mpm_errors, MU1, SIGMA1, MU2, SIGMA2)
-
-# signals_guassian_errors, signals_mpm_errors = signals_both_errors(simulated_signals, ERROR_ITERATIONS, MU1, SIGMA1, MU2, SIGMA2)
+# signals_guassian_errors, signals_mpm_errors = signals_both_errors(signals, ERROR_ITERATIONS, MU1, SIGMA1, MU2, SIGMA2)
 # values = errors_differences(signals_guassian_errors, signals_mpm_errors)
-# plot_table(simulated_signals, params, values)
+# plot_table(signals, params, values)
+
+signals_guassian_errors, signals_mpm_errors = signals_both_errors(simulated_signals, ERROR_ITERATIONS, MU1, SIGMA1, MU2, SIGMA2)
+plot_signals(signals_guassian_errors, signals_mpm_errors, MU1, SIGMA1, MU2, SIGMA2)
+
+# signals_guassian_errors, signals_mpm_errors = signals_both_errors(simulated_signals, ERROR_ITERATIONS, MU1, SIGMA1, MU2, SIGMA2)
+values = errors_differences(signals_guassian_errors, signals_mpm_errors)
+plot_table(simulated_signals, params, values)

@@ -1,4 +1,4 @@
-from utils.plot_graphs import plot_graphs
+from .plot_graphs import plot_graphs
 
 def plot_signals(signals_guassian_errors, signals_mpm_errors, mus1, sigmas1, mus2, sigmas2):
     

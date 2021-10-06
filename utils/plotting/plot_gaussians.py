@@ -2,7 +2,7 @@ from matplotlib import pyplot as plt
 import scipy.stats as stats
 import numpy as np
 
-from .title import title
+from utils.title import title
 
 def calculate_x(mu, sigma):
     return np.linspace(mu - 3 * sigma, mu + 3 * sigma, 100)
