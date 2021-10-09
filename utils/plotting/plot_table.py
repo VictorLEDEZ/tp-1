@@ -4,6 +4,13 @@ import numpy as np
 
 
 def plot_table(x, params, values):
+    """plot the table
+
+    Args:
+        x ([[Number]]): the signal
+        params ([[Number]]): the params (mus and sigmas)
+        values ([[Number]]): all the values in the table
+    """
 
     values = np.around(np.absolute(np.transpose(values)), 4)
 

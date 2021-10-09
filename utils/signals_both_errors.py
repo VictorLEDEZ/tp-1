@@ -3,6 +3,19 @@ from .mean_error import mean_error
 
 
 def signals_both_errors(signals, error_iterations, mus1, sigmas1, mus2, sigmas2):
+    """caclulates the mean error across all the iterations of the signal with the two methods
+
+    Args:
+        signals ([[Number]]): all the signals
+        error_iterations (Number): the amount of simulated signals
+        mu1s ([Number]): the first means
+        sigmas1 ([Number]): the first standard deviations
+        mus2 ([Number]): the second means
+        sigmas2 ([Number]): the second standard deviations
+
+    Returns:
+        [[[Number]]]: the array containing all the errors across the iterations with the two methods
+    """
 
     signals_guassian_errors = []
     signals_mpm_errors = []

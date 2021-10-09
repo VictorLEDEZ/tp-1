@@ -8,7 +8,8 @@ def plot_graphs(signal_number, all_gaussian_errors, all_mpm_errors, all_mu_1, al
 
     Args:
         signal_number (Number): the number of the current signal
-        errors ([[Number]]): all the mean errors depending on the mus and sigmas
+        all_gaussian_errors ([[Number]]): all the mean errors depending on the mus and sigmas calculated with the gaussian methode
+        all_mpm_errors ([[Number]]): all the mean errors depending on the mus and sigmas calculated with the mpm methode
         all_mu_1 ([Number]): the array containing the first mus
         all_sigma_1 ([Number]): the array containing the first sigmas
         all_mu_2 ([Number]): the array containing the second mus

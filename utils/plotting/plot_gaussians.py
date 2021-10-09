@@ -6,6 +6,15 @@ from utils.title import title
 
 
 def calculate_x(mu, sigma):
+    """generates the x axis for the gaussian distribution
+
+    Args:
+        mu (Number): the mu of the gaussian
+        sigma (Number): the sigma of the gaussian
+
+    Returns:
+        [Number]: the x-axis array
+    """
     return np.linspace(mu - 3 * sigma, mu + 3 * sigma, 100)
 
 
@@ -13,7 +22,6 @@ def plot_gaussians(all_mu_1, all_sigma_1, all_mu_2, all_sigma_2):
     """plots the results thanks to pyplot
 
     Args:
-        errors ([[Number]]): all the mean errors depending on the mus and sigmas
         all_mu_1 ([Number]): the array containing the first mus
         all_sigma_1 ([Number]): the array containing the first sigmas
         all_mu_2 ([Number]): the array containing the second mus
