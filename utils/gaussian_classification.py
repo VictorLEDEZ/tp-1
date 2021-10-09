@@ -1,6 +1,7 @@
 from scipy import stats as stats
 import numpy as np
 
+
 def gaussian_classification(output, class1, class2, mu1, sigma1, mu2, sigma2):
     """Reconstitute the segmented signal S from the recieved signal via class1 and class2
 

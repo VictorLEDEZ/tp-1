@@ -23,13 +23,13 @@ signals = load_signals()
 simulated_signals = simulate_signals(SIMULATION_SIZE, CLASS1, CLASS2, P1_P2)
 
 params = {
-    'mus1' : MU1,
-    'mus2' : MU2,
-    'sigmas1' : SIGMA1,
-    'sigmas2' : SIGMA2,
+    'mus1': MU1,
+    'mus2': MU2,
+    'sigmas1': SIGMA1,
+    'sigmas2': SIGMA2,
 }
 
-# plot_gaussians(MU1, SIGMA1, MU2, SIGMA2)
+plot_gaussians(MU1, SIGMA1, MU2, SIGMA2)
 
 # signals_guassian_errors, signals_mpm_errors = signals_both_errors(signals, ERROR_ITERATIONS, MU1, SIGMA1, MU2, SIGMA2)
 # plot_signals(signals_guassian_errors, signals_mpm_errors, MU1, SIGMA1, MU2, SIGMA2)
@@ -38,8 +38,10 @@ params = {
 # values = errors_differences(signals_guassian_errors, signals_mpm_errors)
 # plot_table(signals, params, values)
 
-signals_guassian_errors, signals_mpm_errors = signals_both_errors(simulated_signals, ERROR_ITERATIONS, MU1, SIGMA1, MU2, SIGMA2)
-plot_signals(signals_guassian_errors, signals_mpm_errors, MU1, SIGMA1, MU2, SIGMA2)
+signals_guassian_errors, signals_mpm_errors = signals_both_errors(
+    simulated_signals, ERROR_ITERATIONS, MU1, SIGMA1, MU2, SIGMA2)
+plot_signals(signals_guassian_errors, signals_mpm_errors,
+             MU1, SIGMA1, MU2, SIGMA2)
 
 # signals_guassian_errors, signals_mpm_errors = signals_both_errors(simulated_signals, ERROR_ITERATIONS, MU1, SIGMA1, MU2, SIGMA2)
 values = errors_differences(signals_guassian_errors, signals_mpm_errors)

@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def gaussian_noise(input, classe1, classe2, mu1, sigma1, mu2, sigma2):
     """Changes the input by adding some noise depending on omega1 or omega2
 

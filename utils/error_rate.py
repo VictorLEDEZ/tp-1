@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def error_rate(emitted, received):
     """calculates the Bit Error Rate (BER) between the emitted and the recieved signal
 

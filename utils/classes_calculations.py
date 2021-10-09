@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def classes_calculations(input):
     """calculates the classes for a given input
 
@@ -9,5 +10,6 @@ def classes_calculations(input):
     Returns:
         (Number): the two classes
     """
-    counts, _ = np.histogram(input, bins = int(input.max() + 1), range = (0, int(input.max())))
+    counts, _ = np.histogram(input, bins=int(
+        input.max() + 1), range=(0, int(input.max())))
     return np.nonzero(counts)[0]
